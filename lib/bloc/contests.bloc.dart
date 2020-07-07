@@ -4,7 +4,9 @@ import 'package:superworldcon/apis/contests.dart';
 enum ContestListEvent { fetch }
 
 class ContestListBloc extends Bloc<ContestListEvent, List<ContestListResponse>> {
-  ContestListBloc(): super([]);
+  ContestListBloc(): super([]) {
+    this.add(ContestListEvent.fetch);
+  }
 
   @override
   Stream<List<ContestListResponse>> mapEventToState(ContestListEvent evt) async* {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:superworldcon/bloc/contests.bloc.dart';
 import 'package:superworldcon/page/login.page.dart';
 
 void main() {
@@ -16,7 +17,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginPage(title: "Super world con"),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<ContestListBloc>(
+            create: (BuildContext context) => ContestListBloc(),
+          ),
+        ],
+        child: LoginPage(title: "Super world con")
+      ),
     );
   }
 }
